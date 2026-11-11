@@ -3,7 +3,8 @@ import { BrowserRouter } from "react-router-dom";
 import { createRoot } from 'react-dom/client'
 
 // import { App } from './components/App/App.jsx'
-import { App } from '@/components/App/App.jsx'
+import { App, AppFiltration1 } from '@/components/App'
+
 
 //todo: var.1  Підключення Normalize (npm i normalize.css)
 // import 'normalize.css';  //! var.1 підключення тільки Normalize
@@ -15,7 +16,8 @@ import './index.css'; //! підключення Normalize і Reset CSS
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter basename="/airplane-model-store3-state1">
-      <App />
+      {/* <App /> */}
+      <AppFiltration1 />
      </BrowserRouter>
   </StrictMode>,
 );
