@@ -7,6 +7,10 @@ export function AppCounter() {
   return (
     <>
       <Counter />
+
+      {/* //! Початковий стан лічильника з props */}
+      <Counter initialValue={10} />
+
     </>
   );
 }

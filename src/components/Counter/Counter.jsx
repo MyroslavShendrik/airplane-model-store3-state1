@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import css from "@/components/App/App.module.css";
-
+// import {i} from "@/components/App/AppCounter.jsx"
 // export function Counter() {
 //   const state ={
 //     value: 0 
@@ -51,11 +51,19 @@ import css from "@/components/App/App.module.css";
 //! 2.Коли змінюється state ✅
 
 export class Counter extends Component {
+  static defaultProps = {
+         initialValue: 9,
+};
+
   state = {
-    value: 0,
+    value: this.props.initialValue,
   };
-  handleIncrement = () => {
+  handleIncrement = (event) => {
     console.log("+1");
+    console.log("this:", this); //* Counter{...}
+       console.log("event:", event);
+      console.log("event.target:", event.target);
+      console.log("event.type:", event.type); 
     //   this.setState({ value: 9 });
     this.setState((prevState) => {
       return {
