@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import css from "@/components/App/App.module.css";
+import {Controls} from "@/components/Counter/Controls.jsx"
 // import {i} from "@/components/App/AppCounter.jsx"
 // export function Counter() {
 //   const state ={
@@ -85,21 +86,10 @@ export class Counter extends Component {
     return (
       <div className={css.counter}>
         <span className={css.counterValue}>{this.state.value}</span>
-        <div className={css.counterControls}>
-          <button
-            className={css.buttonIncrement}
-            //    onClick={() => { console.log("+1") }}
-            onClick={this.handleIncrement}
-          >
-            + 1
-          </button>
-          <button
-            className={css.buttonDecrement}
-            onClick={this.handleDecrement}
-          >
-            - 1
-          </button>
-        </div>
+         <Controls
+          onHandleIncrement={this.handleIncrement}
+          onHandleDecrement={this.handleDecrement}
+ />
       </div>
     );
   }
