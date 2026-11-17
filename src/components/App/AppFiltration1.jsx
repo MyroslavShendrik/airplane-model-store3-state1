@@ -24,34 +24,75 @@ import css from "./App.module.css"; //! CSS-модулі
 export class AppFiltration1 extends Component {
   state = {
     category: "all",
+    title: ""
   };
+
+// handleCategoryChange = (category) =>{
+//   this.setState({category})
+// }
+allFiltration= () => {
+  console.log("Клік в кнопку All");
+  this.setState({category: "all",
+    title: "Магазин моделей літальних апаратів"
+
+  }
+
+  )
+}
+planeFiltration = () => {
+  console.log("Клік в кнопку Літаки");
+  this.setState({
+    category: "planes",
+    title:"Магазин моделей літаків"
+  })
+}
+helicopterFiltration =  () => {
+  console.log("Клік в кнопку Вертольоти");
+  this.setState(
+    {category: "helicopters",
+      title: "Магазин моделей вертольотів"
+    }
+  )
+}
   render() {
+    const {category, title} = this.state;
+    console.log("category:",category);
+    const allAircrafts = [...planes, ...helicopters]
+    const filteredAircraft = 
+      category === "all"
+      ? allAircrafts
+      : category === "planes"
+      ? planes
+      : helicopters
+    
     return (
       <>
       <div className={css.filterBox}>
         <button
         className={css.button}
-        // onClick={()}
+        onClick={this.allFiltration}
         >
           Всі
           </button>
         <button
         className={css.button}
+        onClick={this.planeFiltration}
         >
           Літаки
           </button>
         <button
         className={css.button}
+        onClick={this.helicopterFiltration}
         >
           Вертольоти
           </button>
       </div>
-        <Section title="Магазин моделей літаків!!!!!!!">
-          <PlanesList items={planes} />
+        <Section title={title}>
+          <PlanesList items={filteredAircraft} />
         </Section>
-        <Section title="Магазин моделей гелікоптерів">
+        {/* <Section title="Магазин моделей гелікоптерів">
           <PlanesList items={helicopters} />
-        </Section>
+        </Section> */}
       </>
     );
   }
