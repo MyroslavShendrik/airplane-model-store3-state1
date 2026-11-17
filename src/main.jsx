@@ -17,8 +17,8 @@ createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter basename="/airplane-model-store3-state1">
       {/* <App /> */}
-      <AppCounter />
-      {/* <AppFiltration1 /> */}
+      {/* <AppCounter /> */}
+      <AppFiltration1 />
      </BrowserRouter>
   </StrictMode>,
 );
