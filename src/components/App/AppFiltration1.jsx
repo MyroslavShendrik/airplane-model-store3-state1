@@ -23,47 +23,41 @@ import css from "./App.module.css"; //! CSS-модулі
 //! Компонент-клас
 export class AppFiltration1 extends Component {
   state = {
-    category: "all",
-    title: ""
+    isPlanes: false,
+isHelicopters: false,
+
   };
 
-// handleCategoryChange = (category) =>{
-//   this.setState({category})
-// }
 allFiltration= () => {
   console.log("Клік в кнопку All");
-  this.setState({category: "all",
-    title: "Магазин моделей літальних апаратів"
-
+  this.setState({
+    isPlanes:true,
+    isHelicopters:true
+  });
   }
 
-  )
-}
+
 planeFiltration = () => {
   console.log("Клік в кнопку Літаки");
-  this.setState({
-    category: "planes",
-    title:"Магазин моделей літаків"
-  })
+    this.setState({
+    isPlanes:true,
+    isHelicopters:false
+  });
 }
+
+
 helicopterFiltration =  () => {
   console.log("Клік в кнопку Вертольоти");
-  this.setState(
-    {category: "helicopters",
-      title: "Магазин моделей вертольотів"
-    }
-  )
+    this.setState({
+    isPlanes:false,
+    isHelicopters:true
+  });
 }
   render() {
-    const {category, title} = this.state;
-    console.log("category:",category);
-    const allAircrafts = [...planes, ...helicopters]
-    const filteredAircraft = 
-      category === "all"
-      ? allAircrafts
-      : category === "planes"
-      ? planes
-      : helicopters
+    const {isPlanes, isHelicopters} = this.state;
+    console.log("isPlanes:",isPlanes)
+    console.log("isHelicopters:",isHelicopters)
+
     
     return (
       <>
@@ -87,12 +81,12 @@ helicopterFiltration =  () => {
           Вертольоти
           </button>
       </div>
-        <Section title={title}>
-          <PlanesList items={filteredAircraft} />
+        <Section isOn={isPlanes} title="Магазин моделей літаків">
+          <PlanesList items={planes} />
         </Section>
-        {/* <Section title="Магазин моделей гелікоптерів">
+        <Section isOn={isHelicopters} title="Магазин моделей гелікоптерів">
           <PlanesList items={helicopters} />
-        </Section> */}
+        </Section>
       </>
     );
   }
