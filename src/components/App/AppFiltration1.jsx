@@ -24,67 +24,77 @@ import css from "./App.module.css"; //! CSS-модулі
 export class AppFiltration1 extends Component {
   state = {
     isPlanes: false,
-isHelicopters: false,
-
+    isHelicopters: false,
+    bgColorSection: "white",
   };
 
-allFiltration= () => {
-  console.log("Клік в кнопку All");
-  this.setState({
-    isPlanes:true,
-    isHelicopters:true
-  });
-  }
-
-
-planeFiltration = () => {
-  console.log("Клік в кнопку Літаки");
+  allFiltration = () => {
+    console.log("Клік в кнопку All");
     this.setState({
-    isPlanes:true,
-    isHelicopters:false
-  });
-}
+      isPlanes: true,
+      isHelicopters: true,
+      bgColorSection: "green",
+    });
+  };
 
-
-helicopterFiltration =  () => {
-  console.log("Клік в кнопку Вертольоти");
+  planeFiltration = () => {
+    console.log("Клік в кнопку Літаки");
     this.setState({
-    isPlanes:false,
-    isHelicopters:true
-  });
-}
+      isPlanes: true,
+      isHelicopters: false,
+      bgColorSection: "yellow",
+    });
+  };
+
+  helicopterFiltration = () => {
+    console.log("Клік в кнопку Вертольоти");
+    this.setState({
+      isPlanes: false,
+      isHelicopters: true,
+      bgColorSection: "lightblue",
+    });
+  };
+
   render() {
-    const {isPlanes, isHelicopters} = this.state;
-    console.log("isPlanes:",isPlanes)
-    console.log("isHelicopters:",isHelicopters)
+    const {
+      isPlanes,
+      isHelicopters,
+      bgColorSection
+    } = this.state;
 
-    
+    console.log("-------------------------------------------")
+    console.log("isPlanes:", isPlanes);
+    console.log("isHelicopters:", isHelicopters);
+    console.log("bgColorSection:", bgColorSection);
+    console.log("-------------------------------------------")
+
     return (
       <>
-      <div className={css.filterBox}>
-        <button
-        className={css.button}
-        onClick={this.allFiltration}
-        >
-          Всі
+        {/* //! Filtration */}
+        <div className={css.filterBox}>
+          <button className={css.button} onClick={this.allFiltration}>
+            Всі
           </button>
-        <button
-        className={css.button}
-        onClick={this.planeFiltration}
-        >
-          Літаки
+          <button className={css.button} onClick={this.planeFiltration}>
+            Літаки
           </button>
-        <button
-        className={css.button}
-        onClick={this.helicopterFiltration}
-        >
-          Вертольоти
+          <button className={css.button} onClick={this.helicopterFiltration}>
+            Вертольоти
           </button>
-      </div>
-        <Section isOn={isPlanes} title="Магазин моделей літаків">
+        </div>
+        {/* //! список літальних апаратів */}
+        <Section
+          isOn={isPlanes}
+          title="Магазин моделей літаків"
+          bgColor={bgColorSection}
+        >
           <PlanesList items={planes} />
         </Section>
-        <Section isOn={isHelicopters} title="Магазин моделей гелікоптерів">
+        <Section
+          isOn={isHelicopters}
+          title="Магазин моделей гелікоптерів"
+          bgColor={bgColorSection}
+        >
           <PlanesList items={helicopters} />
         </Section>
       </>

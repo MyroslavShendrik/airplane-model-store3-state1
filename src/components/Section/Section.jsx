@@ -2,11 +2,18 @@ import PropTypes from "prop-types";
 // import './Section.css'
 import css from "./Section.module.css"; //! CSS-модулі
 
-function Section({ title, children, isOn }) {
+function Section({
+  title,
+  children,
+  isOn,
+  bgColor
+}) {
   return (
     <>
       {isOn && (
-        <section>
+        <section style={{
+          backgroundColor: bgColor
+        }}>
           {title && (
             <h2
               // style={{
