@@ -88,14 +88,16 @@ export class AppFiltration1 extends Component {
           title="Магазин моделей літаків"
           bgColor={bgColorSection}
         >
-          <PlanesList items={planes} />
+          <PlanesList items={planes}
+          />
         </Section>
         <Section
           isOn={isHelicopters}
           title="Магазин моделей гелікоптерів"
           bgColor={bgColorSection}
         >
-          <PlanesList items={helicopters} />
+          <PlanesList items={helicopters}
+          />
         </Section>
       </>
     );
