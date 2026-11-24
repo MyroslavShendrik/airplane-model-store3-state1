@@ -27,14 +27,16 @@ export class AppFiltration2 extends Component {
   state = {
     isPlanes: false,
     isHelicopters: false,
-    bgColorSection: "white",
+    isAll: true,
+    bgColorSection: "green",
   };
 
   allFiltration = () => {
     console.log("Клік в кнопку All");
     this.setState({
-      isPlanes: true,
-      isHelicopters: true,
+      isAll: true,
+      isPlanes: false,
+       isHelicopters: false,
       bgColorSection: "green",
     });
   };
@@ -42,6 +44,7 @@ export class AppFiltration2 extends Component {
   planeFiltration = () => {
     console.log("Клік в кнопку Літаки");
     this.setState({
+      isAll: false,
       isPlanes: true,
       isHelicopters: false,
       bgColorSection: "yellow",
@@ -51,6 +54,7 @@ export class AppFiltration2 extends Component {
   helicopterFiltration = () => {
     console.log("Клік в кнопку Вертольоти");
     this.setState({
+      isAll: false,
       isPlanes: false,
       isHelicopters: true,
       bgColorSection: "lightblue",
@@ -68,7 +72,7 @@ export class AppFiltration2 extends Component {
     console.log("-------------------------------------------")
     console.log("isPlanes:", isPlanes);
     console.log("isHelicopters:", isHelicopters);
-    console.log("isAll:",isAll);
+    console.log("isAll:", isAll);
     console.log("bgColorSection:", bgColorSection);
     console.log("-------------------------------------------")
 
@@ -87,6 +91,15 @@ export class AppFiltration2 extends Component {
           </button>
         </div>
         {/* //! список літальних апаратів */}
+        <Section
+          isOn={isAll}
+          title="Магазин моделей літальних апаратів"
+          bgColor={bgColorSection}
+        >
+          <PlanesList items={aircrafts}
+          />
+        </Section>
+
         <Section
           isOn={isPlanes}
           title="Магазин моделей літаків"
