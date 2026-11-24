@@ -5,6 +5,8 @@ import PlanesList from "@/components/PlanesList/PlanesList.jsx"; //! ваніл�
 
 import planes from "@/json/planes.json"; //! --> ✅✅✅Аліаси імпортів з абсолютними шляхами з jsconfig.json
 import helicopters from "@/json/helicopters.json";
+import aircrafts from "@/json/aircrafts.json";
+
 import css from "./App.module.css"; //! CSS-модулі
 //! Звичайний компонент
 // export function AppFiltration1() {
@@ -59,12 +61,14 @@ export class AppFiltration2 extends Component {
     const {
       isPlanes,
       isHelicopters,
+      isAll,
       bgColorSection
     } = this.state;
 
     console.log("-------------------------------------------")
     console.log("isPlanes:", isPlanes);
     console.log("isHelicopters:", isHelicopters);
+    console.log("isAll:",isAll);
     console.log("bgColorSection:", bgColorSection);
     console.log("-------------------------------------------")
 
